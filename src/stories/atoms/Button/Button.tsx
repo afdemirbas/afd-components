@@ -1,6 +1,12 @@
 import React from 'react';
-export interface ButtonProps {}
+import StyledButton from './Button.styled';
+export interface ButtonProps {
+  title: string;
+  secondary?: boolean;
+  tertiary?: boolean;
+  onClick?: () => void;
+}
 
-export const Button: React.FC<ButtonProps> = (props) => {
-  return <div></div>;
+export const Button: React.FC<ButtonProps> = ({ title, ...props }) => {
+  return <StyledButton {...props}>{title}</StyledButton>;
 };
