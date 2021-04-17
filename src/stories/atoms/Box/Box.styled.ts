@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { BoxProps } from './Box';
 
 const handleAlignment: (props: BoxProps) => string = (
@@ -19,25 +19,70 @@ const handleAlignment: (props: BoxProps) => string = (
   if (props.sa) {
     return 'space-around';
   }
-  return 'center';
+  return '';
+};
+
+const handleMargin: (props: BoxProps) => string = (props: BoxProps): string => {
+  if (props.mg === 'mg-1') {
+    return '1rem';
+  }
+  if (props.mg === 'mg-2') {
+    return '2rem';
+  }
+  if (props.mg === 'mg-3') {
+    return '3rem';
+  }
+  if (props.mg === 'mg-4') {
+    return '4rem';
+  }
+  return '';
+};
+const handlePadding: (props: BoxProps) => string = (
+  props: BoxProps
+): string => {
+  if (props.pd === 'pd-1') {
+    return '1rem';
+  }
+  if (props.pd === 'pd-2') {
+    return '2rem';
+  }
+  if (props.pd === 'pd-3') {
+    return '3rem';
+  }
+  if (props.pd === 'pd-4') {
+    return '4rem';
+  }
+  return '';
 };
 
 const Box = styled.div<BoxProps>`
-  background-color: ${(props) => props.bg || null}
-    ${(props: BoxProps) =>
-      props.row &&
-      css`
-        display: flex;
-        flex-direction: row;
-        justify-content: ${(props: BoxProps) => handleAlignment(props)};
-      `}
-    ${(props: BoxProps) =>
-      props.col &&
-      css`
-        display: flex;
-        flex-direction: col;
-        justify-content: ${(props: BoxProps) => handleAlignment(props)};
-      `};
+  background-color: ${(props) => props.bg || null};
+  margin: ${(props) => handleMargin(props)}};
+  padding: ${(props) => handlePadding(props)}};
+  &:hover {
+    cursor: ${(props) => (props.onClick ? 'pointer' : null)};
+    background-color: '#5D5D81';
+  }
+
+  display: ${(props) => {
+    if (props.row || props.col) {
+      return 'flex';
+    }
+    return null;
+  }};
+
+  flex-direction: ${(props) => {
+    if (props.row) {
+      return 'row';
+    }
+    if (props.col) {
+      return 'column';
+    }
+  }};
+
+  justify-content: ${(props) => handleAlignment(props)};
+
+  align-items: ${(props) => (props.center ? 'center' : null)};
 `;
 
 export default Box;

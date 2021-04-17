@@ -3,7 +3,6 @@ import { Story, Meta } from '@storybook/react';
 import { Atom } from '@styled-icons/fa-solid';
 import { Box, BoxProps } from './Box';
 
-const atom = <Atom size="18" />;
 const onClick = () => {
   alert('Clicked!');
 };
@@ -14,3 +13,20 @@ export default {
 
 export const Default = () => <Box>BOX</Box>;
 export const Colored = () => <Box bg="red">BOX</Box>;
+export const Row = () => (
+  <Box row>
+    <Box bg="red" mg="mg-1">
+      Box
+    </Box>
+    <Box bg="green">Box</Box>
+    <Box bg="blue">Box</Box>
+  </Box>
+);
+export const Column = () => (
+  <Box col>
+    <Box bg="red">Box</Box>
+    <Box bg="green">Box</Box>
+    <Box bg="blue">Box</Box>
+  </Box>
+);
+export const Clickable = () => <Box onClick={onClick}>CLICK ME!</Box>;
