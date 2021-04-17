@@ -1,12 +1,21 @@
 import React from 'react';
 import StyledButton from './Button.styled';
+
 export interface ButtonProps {
-  title: string;
+  label?: string;
   secondary?: boolean;
   tertiary?: boolean;
+  outline?: boolean;
+  small?: boolean;
+  large?: boolean;
+  icon?: any;
   onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ title, ...props }) => {
-  return <StyledButton {...props}>{title}</StyledButton>;
+export const Button: React.FC<ButtonProps> = ({ icon, label, ...props }) => {
+  return (
+    <StyledButton {...props}>
+      {icon} {label}
+    </StyledButton>
+  );
 };
