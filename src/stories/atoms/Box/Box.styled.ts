@@ -61,7 +61,7 @@ const Box = styled.div<BoxProps>`
   padding: ${(props) => handlePadding(props)}};
   &:hover {
     cursor: ${(props) => (props.onClick ? 'pointer' : null)};
-    background-color: '#5D5D81';
+    background-color: ${(props) => (props.onClick ? '#5d5d81' : null)};;
   }
 
   display: ${(props) => {
